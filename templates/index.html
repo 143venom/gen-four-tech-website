@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Gen Four Tech{% endblock %}
+
+{% block content %}
+
+    <!-- Navbar & Carousel Start -->
+    <div class="container-fluid position-relative p-0">
+        
+        {% include "nav.html" %}
+
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for slider in sliders %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img class="w-100" src="{{ slider.image.url }}" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{ slider.title }}</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">{{ slider.subtitle }}</h1>
+                            <a href="{% url 'quote' %}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
+                            <a href="{% url 'contact' %}" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Navbar & Carousel End -->
+
+
+    <!-- Facts Start -->
+    {% include "facts.html" %}
+    <!-- Facts End -->
+
+
+    <!-- About Start -->
+    {% include "about1.html" %}
+    <!-- About End -->
+
+
+    <!-- Features Start -->
+    {% include "feature1.html" %}
+    <!-- Features End -->
+
+
+    <!-- Service Start -->
+    {% include "service1.html" %}
+    <!-- Service End -->
+
+
+    <!-- Pricing Plan Start -->
+    {% include "price1.html" %}
+    <!-- Pricing Plan End -->
+
+
+    <!-- Testimonial Start -->
+    {% include "testimonial1.html" %}
+    <!-- Testimonial End -->
+
+
+    <!-- Team Start -->
+    {% include "team1.html" %}
+    <!-- Team End -->
+
+
+    <!-- Blog Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
+                <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
+            </div>
+            <div class="row g-5">
+                {% for blog in blogs|slice:":3" %}
+                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
+                    <div class="blog-item bg-light rounded overflow-hidden">
+                        <div class="blog-img position-relative overflow-hidden">
+                            <img class="img-fluid" src="{{ blog.image.url }}" alt="">
+                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="{% url 'blog_details' blog.id %}">{{ blog.title }}</a>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex mb-3">
+                                <small class="me-3"><i class="far fa-user text-primary me-2"></i>{{ blog.author }}</small>
+                                <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ blog.created_on|date:"d M, Y" }}</small>
+                            </div>
+                            <h4 class="mb-3">{{ blog.title }}</h4>
+                            <p>{{ blog.blog_desc | truncatechars_html:30 }}</p>
+                            <a class="text-uppercase" href="{% url 'blog_details' blog.id %}">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Blog End -->
+
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Request</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    .info {
+      background: #f9f9f9;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-left: 6px solid #007bff; /* adjust color as needed */
+    }
+    .info h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #007bff;
+    }
+    .info p {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Quote Request</h2>
+    <div class="info">
+      <h3>Contact Information:</h3>
+      <p><strong>Name:</strong> {{ name }}</p>
+      <p><strong>Email:</strong> <a href="mailto:{{ email }}">{{ email }}</a></p>
+      <p><strong>Service:</strong> {{ service }}</p>
+      <p><strong>Message:</strong></p>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</body>
+</html>

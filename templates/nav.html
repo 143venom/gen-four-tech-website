@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+  <a href="{% url 'home'%}" class="navbar-brand p-0">
+                <img src="{{ company_logo.logo.url }}" alt="Gen4Tech">
+            </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="fa fa-bars"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+          <a href="{% url 'home' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+          <a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about' %}active{% endif %}">About</a>
+          <a href="{% url 'service' %}" class="nav-item nav-link {% if request.path == '/service' %}active{% endif %}">Services</a>
+          <a href="{% url 'blog' %}" class="nav-item nav-link {% if request.path == '/blog' %}active{% endif %}">Blogs</a>
+          <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact' %}active{% endif %}">Contact</a>
+      </div>
+  </div>
+</nav>
